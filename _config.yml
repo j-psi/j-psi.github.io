@@ -22,20 +22,23 @@ title: Jackson Davis Personal Site
 #tagline: A small site to host my research and pet projects
 description: >- # this means to ignore newlines until "baseurl:"
   My personal site for my research work and hobbies. Physics PhD student
-  at the University of Louisville. 
+  at the University of Louisville.
+  This site is not affiliated with the University of Louisville
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  j-psi
 
 # Build settings
 #theme: jekyll-theme-minima
+#theme: jekyll-theme-midnight
+theme: jekyll-theme-merlot
 #remote_theme: pages-themes/midnight@v0.2.0
-remote_theme: "jekyll/minima@1e8a445"
+#remote_theme: "jekyll/minima@1e8a445"
 
 plugins:
-- jekyll-feed
+#- jekyll-feed
 - jekyll-remote-theme
-
+- jekyll-sitemap
 
 # Exclude from processing.
 # The following items will not be processed, by default.
