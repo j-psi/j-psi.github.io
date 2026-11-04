@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jdavis - GitHub Pages Hub</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for Merlot Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Open+Sans:wght@400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        merlot: {
+                            50: '#fdf2f2',
+                            100: '#fbe5e5',
+                            200: '#f7cece',
+                            600: '#9b1c1c',
+                            700: '#800000',
+                            800: '#680000',
+                            900: '#4a0000',
+                            950: '#2b0000',
+                        },
+                        charcoal: '#222222',
+                        offwhite: '#fcfcfc',
+                    },
+                    fontFamily: {
+                        serif: ['Merriweather', 'Georgia', 'serif'],
+                        sans: ['"Open Sans"', 'sans-serif'],
+                        mono: ['"Fira Code"', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Classic Jekyll Merlot Theme Custom Styling */
+        body {
+            background-color: #f4f4f0;
+            color: #222222;
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+        }
+
+        .merlot-header {
+            background: linear-gradient(135deg, #680000 0%, #3e0000 100%);
+            border-bottom: 4px solid #4a0000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .merlot-card {
+            background: #ffffff;
+            border: 1px solid #e1e1e1;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+        }
+
+        .merlot-btn {
+            background-color: #680000;
+            color: #ffffff;
+            transition: all 0.2s ease;
+        }
+        .merlot-btn:hover {
+            background-color: #4a0000;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .merlot-btn-outline {
+            border: 1px solid #680000;
+            color: #680000;
+            background: transparent;
+            transition: all 0.2s ease;
+        }
+        .merlot-btn-outline:hover {
+            background: #680000;
+            color: #ffffff;
+        }
+
+        /* Custom scrollbars */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #800000;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4a0000;
+        }
+
+        .tab-active {
+            border-bottom: 3px solid #680000;
+            color: #680000;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- MERLOT HEADER -->
+    <header class="merlot-header text-white">
+        <div class="max-w-5xl mx-auto px-4 py-8 md:py-12">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                <div>
+                    <h1 class="font-serif text-4xl md:text-6xl font-bold tracking-tight mb-2">
+                        <a href="#" class="hover:underline flex items-center gap-3">
+                            <i class="fa-solid fa-feather-pointed text-merlot-200 text-3xl md:text-5xl"></i>
+                            jdavis
+                        </a>
+                    </h1>
+                    <p class="text-merlot-100 font-serif italic text-base md:text-lg opacity-90">
+                        Personal Site & GitHub Repository Media Hub
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <button onclick="scrollToSection('blog-section')" class="px-4 py-2 bg-black/30 hover:bg-black/50 text-white rounded text-sm font-medium transition border border-white/20 flex items-center gap-2">
+                        <i class="fa-solid fa-newspaper"></i> Blog
+                    </button>
+                    <button onclick="scrollToSection('repository-media')" class="px-4 py-2 bg-black/30 hover:bg-black/50 text-white rounded text-sm font-medium transition border border-white/20 flex items-center gap-2">
+                        <i class="fa-solid fa-photo-film"></i> Repo Media
+                    </button>
+                    <button onclick="scrollToSection('jekyll-setup')" class="px-4 py-2 bg-white text-merlot-900 hover:bg-merlot-50 font-semibold rounded text-sm transition shadow flex items-center gap-2">
+                        <i class="fa-solid fa-code"></i> Setup & Config
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="flex-grow max-w-5xl w-full mx-auto px-4 py-8 space-y-12">
+
+        <!-- INTRO HERO -->
+        <section class="merlot-card p-6 md:p-8 border-l-4 border-l-merlot-800">
+            <h2 class="font-serif text-2xl font-bold text-merlot-900 mb-3 flex items-center gap-2">
+                <i class="fa-solid fa-terminal text-merlot-700"></i> Welcome to jdavis.github.io
+            </h2>
+            <p class="text-gray-700 mb-4 leading-relaxed">
+                Welcome! This static site showcases research posts, project technical notes, and direct repository hosted media including <strong>PDFs</strong> and <strong>MP4 videos</strong> served directly from GitHub Pages storage.
+            </p>
+            <div class="flex flex-wrap gap-4 text-sm font-medium">
+                <span class="inline-flex items-center gap-1.5 text-merlot-800 bg-merlot-50 px-3 py-1 rounded border border-merlot-200">
+                    <i class="fa-regular fa-file-pdf"></i> Repo PDFs
+                </span>
+                <span class="inline-flex items-center gap-1.5 text-merlot-800 bg-merlot-50 px-3 py-1 rounded border border-merlot-200">
+                    <i class="fa-solid fa-video"></i> Repo MP4s
+                </span>
+                <span class="inline-flex items-center gap-1.5 text-merlot-800 bg-merlot-50 px-3 py-1 rounded border border-merlot-200">
+                    <i class="fa-solid fa-pen-nib"></i> Technical Blog
+                </span>
+            </div>
+        </section>
+
+        <!-- BLOG SECTION -->
+        <section id="blog-section" class="scroll-mt-6">
+            <div class="border-b border-gray-300 pb-3 mb-6 flex items-center justify-between">
+                <div>
+                    <h2 class="font-serif text-2xl font-bold text-merlot-900 flex items-center gap-2">
+                        <i class="fa-solid fa-book-open text-merlot-700"></i> Recent Blog Posts
+                    </h2>
+                    <p class="text-gray-600 text-xs md:text-sm mt-0.5">Articles, technical write-ups, and project notes by <strong>jdavis</strong>.</p>
+                </div>
+            </div>
+
+           
+        <!-- REPOSITORY MEDIA GALLERY (PDFs and MP4s) -->
+        <section id="repository-media" class="scroll-mt-6">
+            <!-- Navigation Tabs & Actions -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-gray-300 pb-3 mb-6 gap-4">
+                <div>
+                    <h2 class="font-serif text-2xl font-bold text-merlot-900 flex items-center gap-2">
+                        <i class="fa-solid fa-folder-tree text-merlot-700"></i> Repository Media Viewer
+                    </h2>
+                    <p class="text-gray-600 text-xs md:text-sm mt-0.5">Explore hosted PDFs and MP4 videos directly from `jdavis/repository` assets.</p>
+                </div>
+
+                <!-- Custom Upload / Filter Action -->
+                <div class="flex items-center gap-2">
+                    <label for="local-file-input" class="merlot-btn px-4 py-2 rounded text-xs md:text-sm font-semibold cursor-pointer flex items-center gap-2 shadow">
+                        <i class="fa-solid fa-cloud-arrow-up"></i> Test Local PDF/MP4
+                    </label>
+                    <input type="file" id="local-file-input" accept="application/pdf,video/mp4" class="hidden" onchange="handleFileUpload(event)">
+                </div>
+            </div>
+
+            <!-- Category Filters -->
+            <div class="flex space-x-6 border-b border-gray-200 mb-6">
+                <button id="tab-all" onclick="switchTab('all')" class="tab-active py-2 px-1 text-sm font-semibold transition">
+                    All Repo Files (<span id="count-all">0</span>)
+                </button>
+                <button id="tab-pdf" onclick="switchTab('pdf')" class="text-gray-600 hover:text-merlot-800 py-2 px-1 text-sm font-semibold transition">
+                    <i class="fa-solid fa-file-pdf mr-1"></i> PDFs (<span id="count-pdf">0</span>)
+                </button>
+                <button id="tab-mp4" onclick="switchTab('mp4')" class="text-gray-600 hover:text-merlot-800 py-2 px-1 text-sm font-semibold transition">
+                    <i class="fa-solid fa-video mr-1"></i> MP4 Videos (<span id="count-mp4">0</span>)
+                </button>
+            </div>
+
+            <!-- MEDIA GRID -->
+            <div id="media-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Dynamic media items render here -->
+            </div>
+        </section>
+
+        <!-- INTERACTIVE MEDIA VIEWER MODAL -->
+        <div id="viewer-modal" class="fixed inset-0 bg-black/80 z-50 hidden flex items-center justify-center p-4">
+            <div class="bg-white rounded-lg w-full max-w-5xl h-[85vh] flex flex-col overflow-hidden shadow-2xl border border-merlot-900">
+                <!-- Modal Header -->
+                <div class="merlot-header text-white px-6 py-4 flex items-center justify-between border-b border-merlot-900">
+                    <div class="flex items-center gap-3">
+                        <i id="modal-icon" class="text-xl"></i>
+                        <div>
+                            <h3 id="modal-title" class="font-serif font-bold text-lg leading-tight">Media Title</h3>
+                            <p id="modal-subtitle" class="text-xs text-merlot-200">Repository Asset Path</p>
+                        </div>
+                    </div>
+                    <button onclick="closeModal()" class="text-merlot-200 hover:text-white text-2xl font-bold px-2 py-1 transition">
+                        &times;
+                    </button>
+                </div>
+                <!-- Modal Body -->
+                <div class="flex-grow bg-gray-100 relative p-2 overflow-auto" id="modal-body-container">
+                    <!-- Dynamic PDF iframe or MP4 video tag will be injected here -->
+                </div>
+                <!-- Modal Footer -->
+                <div class="bg-gray-50 border-t border-gray-200 px-6 py-3 flex items-center justify-between text-sm">
+                    <a id="modal-download-btn" href="#" download class="merlot-btn-outline px-4 py-1.5 rounded text-xs font-semibold flex items-center gap-2">
+                        <i class="fa-solid fa-download"></i> Download File
+                    </a>
+                    <button onclick="closeModal()" class="px-4 py-1.5 bg-gray-300 hover:bg-gray-400 text-gray-800 rounded text-xs font-medium transition">
+                        Close Preview
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- BLOG READ MODAL -->
+        <div id="blog-modal" class="fixed inset-0 bg-black/80 z-50 hidden flex items-center justify-center p-4">
+            <div class="bg-white rounded-lg w-full max-w-3xl h-[85vh] flex flex-col overflow-hidden shadow-2xl border border-merlot-900">
+                <div class="merlot-header text-white px-6 py-4 flex items-center justify-between border-b border-merlot-900">
+                    <h3 id="blog-modal-title" class="font-serif font-bold text-lg">Blog Post</h3>
+                    <button onclick="closeBlogModal()" class="text-merlot-200 hover:text-white text-2xl font-bold px-2 py-1 transition">&times;</button>
+                </div>
+                <div class="flex-grow p-6 md:p-8 overflow-y-auto space-y-4 text-gray-800 leading-relaxed font-sans" id="blog-modal-content">
+                    <!-- Dynamic article content -->
+                </div>
+                <div class="bg-gray-50 border-t border-gray-200 px-6 py-3 flex justify-end">
+                    <button onclick="closeBlogModal()" class="px-4 py-1.5 merlot-btn rounded text-xs font-semibold">Close Article</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- JEKYLL GITHUB PAGES CONFIGURATION GUIDE -->
+        <section id="jekyll-setup" class="merlot-card p-6 md:p-8">
+            <div class="border-b border-gray-200 pb-4 mb-6">
+                <h2 class="font-serif text-2xl font-bold text-merlot-900 flex items-center gap-2">
+                    <i class="fa-solid fa-sliders text-merlot-700"></i> Repository Directory & Jekyll Setup
+                </h2>
+                <p class="text-gray-600 text-sm mt-1">
+                    To serve PDFs and MP4s directly from your GitHub repository under <strong>jdavis</strong>, create the following directory structure and configuration files in your main branch:
+                </p>
+            </div>
+
+            <!-- Repository Structure -->
+            <div class="mb-6">
+                <p class="font-bold text-xs uppercase tracking-wider text-merlot-900 mb-2">Repository File Hierarchy:</p>
+                <pre class="bg-gray-900 text-emerald-400 p-4 rounded text-xs font-mono">
+jdavis.github.io/
+├── _config.yml
+├── index.html (or index.md)
+└── assets/
+    ├── pdfs/
+    │   ├── system-architecture.pdf
+    │   └── research-paper.pdf
+    └── videos/
+        ├── demo-walkthrough.mp4
+        └── project-presentation.mp4
+                </pre>
+            </div>
+
+            <!-- Code Tabs -->
+            <div class="space-y-6">
+                <!-- _config.yml File -->
+                <div>
+                    <div class="flex items-center justify-between bg-gray-800 text-gray-200 px-4 py-2 rounded-t font-mono text-xs">
+                        <span class="flex items-center gap-2"><i class="fa-regular fa-file-code text-merlot-200"></i> _config.yml</span>
+                        <button onclick="copyToClipboard('config-code')" class="hover:text-white transition text-xs flex items-center gap-1">
+                            <i class="fa-regular fa-copy"></i> Copy
+                        </button>
+                    </div>
+                    <pre class="bg-gray-900 text-gray-100 p-4 rounded-b overflow-x-auto text-xs font-mono leading-relaxed"><code id="config-code">title: jdavis | GitHub Pages
+description: Personal site featuring technical blog posts, PDFs, and MP4 video recordings.
+theme: jekyll-theme-merlot
+
+# Repository Base Settings
+url: "https://jdavis.github.io"
+baseurl: ""
+
+# Ensure assets are processed and served correctly
+include:
+  - assets/pdfs/
+  - assets/videos/
+
+plugins:
+  - jekyll-seo-tag</code></pre>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-merlot-950 text-merlot-200 py-8 border-t-4 border-merlot-800 mt-auto">
+        <div class="max-w-5xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
+            <div>
+                <p class="font-serif text-base font-bold text-white mb-1">jdavis &bull; GitHub Pages</p>
+                <p>&copy; <span id="year"></span> Maintained with Jekyll & Merlot Theme aesthetics.</p>
+            </div>
+            <div class="flex space-x-4">
+                <a href="https://github.com" target="_blank" class="hover:text-white transition"><i class="fa-brands fa-github text-sm mr-1"></i> GitHub Profile</a>
+                <span>&bull;</span>
+                <a href="https://docs.github.com/en/pages" target="_blank" class="hover:text-white transition">GitHub Pages Docs</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT FOR INTERACTIVE MEDIA & BLOG -->
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Repository Hosted Media Assets (PDFs and MP4s)
+        let mediaAssets = [
+            {
+                id: '1',
+                title: 'System Architecture Specification',
+                type: 'pdf',
+                repoPath: 'assets/pdfs/system-architecture.pdf',
+                size: '2.4 MB',
+                date: '2026-11-01',
+                url: 'https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/examples/learning/helloworld.pdf',
+                description: 'Detailed PDF breakdown of distributed services, API routing, and cloud infrastructure.'
+            },
+            {
+                id: '2',
+                title: 'Jekyll Merlot Theme Customization Notes',
+                type: 'pdf',
+                repoPath: 'assets/pdfs/merlot-theme-notes.pdf',
+                size: '1.2 MB',
+                date: '2026-10-20',
+                url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
+                description: 'Technical guide on overrides, CSS tokens, and Markdown configurations for Merlot.'
+            },
+            {
+                id: '3',
+                title: 'Platform Overview & Demo Walkthrough',
+                type: 'mp4',
+                repoPath: 'assets/videos/demo-walkthrough.mp4',
+                size: '14.8 MB',
+                date: '2026-11-02',
+                url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+                description: 'MP4 recording demonstrating platform interface features and media streaming controls.'
+            },
+            {
+                id: '4',
+                title: 'Project Architecture Video Presentation',
+                type: 'mp4',
+                repoPath: 'assets/videos/project-presentation.mp4',
+                size: '9.6 MB',
+                date: '2026-09-15',
+                url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+                description: 'High-definition MP4 project pitch and performance benchmarking video.'
+            }
+        ];
+
+        let currentFilter = 'all';
+
+        // Render Media Items
+        function renderMedia() {
+            const grid = document.getElementById('media-grid');
+            grid.innerHTML = '';
+
+            const filtered = mediaAssets.filter(item => currentFilter === 'all' || item.type === currentFilter);
+
+            // Update Counts
+            document.getElementById('count-all').innerText = mediaAssets.length;
+            document.getElementById('count-pdf').innerText = mediaAssets.filter(i => i.type === 'pdf').length;
+            document.getElementById('count-mp4').innerText = mediaAssets.filter(i => i.type === 'mp4').length;
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full merlot-card p-8 text-center text-gray-500">
+                        <i class="fa-solid fa-folder-open text-4xl mb-3 text-merlot-600"></i>
+                        <p class="font-serif">No repository media files found for this category.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            filtered.forEach(item => {
+                const card = document.createElement('div');
+                card.className = "merlot-card p-5 flex flex-col justify-between hover:border-merlot-700 transition duration-200";
+
+                const isPdf = item.type === 'pdf';
+                const iconClass = isPdf ? 'fa-file-pdf text-merlot-800' : 'fa-circle-play text-merlot-800';
+                const badgeColor = isPdf ? 'bg-red-100 text-red-800' : 'bg-purple-100 text-purple-800';
+
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-start justify-between gap-3 mb-2">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid ${iconClass} text-2xl"></i>
+                                <h3 class="font-serif font-bold text-gray-900 leading-snug">${item.title}</h3>
+                            </div>
+                            <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded ${badgeColor}">
+                                ${item.type.toUpperCase()}
+                            </span>
+                        </div>
+                        <p class="text-xs font-mono text-gray-500 bg-gray-100 px-2 py-1 rounded my-2 flex items-center gap-1">
+                            <i class="fa-regular fa-folder text-merlot-800"></i> ${item.repoPath}
+                        </p>
+                        <p class="text-xs text-gray-600 mb-4 line-clamp-2">${item.description}</p>
+                    </div>
+
+                    <div>
+                        <div class="text-[11px] text-gray-400 flex items-center justify-between mb-4 border-t border-gray-100 pt-3">
+                            <span><i class="fa-regular fa-hard-drive mr-1"></i> ${item.size}</span>
+                            <span><i class="fa-regular fa-calendar mr-1"></i> ${item.date}</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="openViewer('${item.id}')" class="flex-1 merlot-btn py-2 rounded text-xs font-semibold flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-eye"></i> Preview Asset
+                            </button>
+                            <a href="${item.url}" download target="_blank" class="merlot-btn-outline px-3 py-2 rounded text-xs font-semibold flex items-center justify-center" title="Download File">
+                                <i class="fa-solid fa-download"></i>
+                            </a>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Switch Active Filter Tab
+        function switchTab(type) {
+            currentFilter = type;
+            ['all', 'pdf', 'mp4'].forEach(t => {
+                const btn = document.getElementById(`tab-${t}`);
+                if (t === type) {
+                    btn.className = "tab-active py-2 px-1 text-sm font-semibold transition";
+                } else {
+                    btn.className = "text-gray-600 hover:text-merlot-800 py-2 px-1 text-sm font-semibold transition";
+                }
+            });
+            renderMedia();
+        }
+
+        // Handle Local File Upload Preview
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const isPdf = file.type === 'application/pdf';
+            const isMp4 = file.type === 'video/mp4';
+
+            if (!isPdf && !isMp4) {
+                alert('Please upload a valid PDF or MP4 video file.');
+                return;
+            }
+
+            const fileUrl = URL.createObjectURL(file);
+            const newAsset = {
+                id: Date.now().toString(),
+                title: file.name,
+                type: isPdf ? 'pdf' : 'mp4',
+                repoPath: `local-upload/${file.name}`,
+                size: (file.size / (1024 * 1024)).toFixed(2) + ' MB',
+                date: new Date().toISOString().split('T')[0],
+                url: fileUrl,
+                description: 'Local file preview loaded from client machine.'
+            };
+
+            mediaAssets.unshift(newAsset);
+            renderMedia();
+            openViewer(newAsset.id);
+        }
+
+        // Open Modal Viewer for PDFs & MP4s
+        function openViewer(id) {
+            const item = mediaAssets.find(a => a.id === id);
+            if (!item) return;
+
+            const modal = document.getElementById('viewer-modal');
+            const container = document.getElementById('modal-body-container');
+            const title = document.getElementById('modal-title');
+            const subtitle = document.getElementById('modal-subtitle');
+            const icon = document.getElementById('modal-icon');
+            const downloadBtn = document.getElementById('modal-download-btn');
+
+            title.innerText = item.title;
+            subtitle.innerText = `${item.repoPath} • ${item.size} • ${item.date}`;
+            downloadBtn.href = item.url;
+
+            container.innerHTML = '';
+
+            if (item.type === 'pdf') {
+                icon.className = 'fa-solid fa-file-pdf text-merlot-200';
+                container.innerHTML = `
+                    <iframe src="${item.url}" class="w-full h-full rounded border-0" title="${item.title}">
+                        <p class="p-4 text-center">Your browser does not support inline PDFs. <a href="${item.url}" class="underline text-merlot-800">Click here to download.</a></p>
+                    </iframe>
+                `;
+            } else if (item.type === 'mp4') {
+                icon.className = 'fa-solid fa-circle-play text-merlot-200';
+                container.innerHTML = `
+                    <div class="w-full h-full flex items-center justify-center bg-black rounded">
+                        <video controls autoplay class="max-h-full max-w-full rounded">
+                            <source src="${item.url}" type="video/mp4">
+                            Your browser does not support MP4 video playback.
+                        </video>
+                    </div>
+                `;
+            }
+
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('viewer-modal');
+            const container = document.getElementById('modal-body-container');
+            modal.classList.add('hidden');
+            container.innerHTML = '';
+        }
+
+        // Blog Modals Data & Handling
+        const blogPosts = {
+            'post-1': {
+                title: 'Hosting Large Media Assets on GitHub Pages with LFS and CDN Fallbacks',
+                date: 'November 02, 2026',
+                content: `
+                    <p class="font-serif text-lg italic text-merlot-900 mb-4">How to manage video recordings and large PDF documents without exceeding GitHub repository storage limits.</p>
+                    <p class="mb-4">GitHub Pages provides an exceptional free platform for developer portfolios and documentation sites. However, storing multiple high-definition <strong>MP4 video files</strong> or multi-page <strong>PDF manuals</strong> directly in standard Git repositories can quickly trigger repository size warnings (1GB soft limit).</p>
+                    <h4 class="font-serif font-bold text-merlot-900 text-base mt-6 mb-2">1. Leveraging Git LFS (Large File Storage)</h4>
+                    <p class="mb-4">Git LFS tracks large binary assets outside the core Git history. When hosting assets like <code>assets/videos/demo-walkthrough.mp4</code>, track them using:</p>
+                    <pre class="bg-gray-900 text-emerald-400 p-3 rounded text-xs font-mono mb-4">git lfs track "*.mp4"\ngit lfs track "*.pdf"</pre>
+                    <h4 class="font-serif font-bold text-merlot-900 text-base mt-6 mb-2">2. Inline HTML5 Media Streaming</h4>
+                    <p>Modern web browsers native support inline PDF rendering via <code>&lt;iframe&gt;</code> tags and standard H.264 MP4 hardware decoding through <code>&lt;video controls&gt;</code> tags, eliminating the need for bulky third-party plugins.</p>
+                `
+            },
+            'post-2': {
+                title: 'Customizing the Jekyll Merlot Theme for Modern Web Workflows',
+                date: 'October 18, 2026',
+                content: `
+                    <p class="font-serif text-lg italic text-merlot-900 mb-4">Enhancing Jekyll's standard Merlot theme with responsive layouts and media modals.</p>
+                    <p class="mb-4">The default GitHub Pages Merlot theme features a classic academic aesthetic with deep crimson top accents and dark charcoal typography. While minimal, modern sites often require interactive media galleries and responsive post cards.</p>
+                    <p>By blending standard Jekyll template variables with lightweight client-side media modal utilities, <strong>jdavis</strong> creates a seamless bridge between markdown articles and interactive video previews.</p>
+                `
+            }
+        };
+
+        function openBlogModal(postId) {
+            const post = blogPosts[postId];
+            if (!post) return;
+
+            document.getElementById('blog-modal-title').innerText = post.title;
+            document.getElementById('blog-modal-content').innerHTML = `
+                <div class="text-xs text-merlot-800 font-semibold mb-3"><i class="fa-regular fa-calendar mr-1"></i> ${post.date} &bull; Published by jdavis</div>
+                <h2 class="font-serif text-2xl font-bold text-gray-900 mb-4 leading-tight">${post.title}</h2>
+                <hr class="border-gray-200 mb-6" />
+                ${post.content}
+            `;
+            document.getElementById('blog-modal').classList.remove('hidden');
+        }
+
+        function closeBlogModal() {
+            document.getElementById('blog-modal').classList.add('hidden');
+        }
+
+        // Smooth Scroll Helper
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Clipboard Copy Helper
+        function copyToClipboard(elementId) {
+            const text = document.getElementById(elementId).innerText;
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            alert('Code snippet copied to clipboard!');
+        }
+
+        window.onload = function() {
+            renderMedia();
+        };
+    </script>
+</body>
+</html>
